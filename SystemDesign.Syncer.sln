@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{98BB4CC1-8128-475E-ACC3-265682701BFF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Syncer.APIs", "src\Syncer.API\Syncer.APIs.csproj", "{DBDF3894-5CCE-4BBF-B8F5-39240882EC30}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Syncer.WebApp", "src\Syncer.WebApp\Syncer.WebApp.csproj", "{74FD647E-4A8F-483A-BE79-99EA79B36588}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DBDF3894-5CCE-4BBF-B8F5-39240882EC30}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DBDF3894-5CCE-4BBF-B8F5-39240882EC30}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DBDF3894-5CCE-4BBF-B8F5-39240882EC30}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DBDF3894-5CCE-4BBF-B8F5-39240882EC30}.Release|Any CPU.Build.0 = Release|Any CPU
+		{74FD647E-4A8F-483A-BE79-99EA79B36588}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{74FD647E-4A8F-483A-BE79-99EA79B36588}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{74FD647E-4A8F-483A-BE79-99EA79B36588}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{74FD647E-4A8F-483A-BE79-99EA79B36588}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{DBDF3894-5CCE-4BBF-B8F5-39240882EC30} = {98BB4CC1-8128-475E-ACC3-265682701BFF}
+		{74FD647E-4A8F-483A-BE79-99EA79B36588} = {98BB4CC1-8128-475E-ACC3-265682701BFF}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {773BCEF9-2FC1-4AC5-A06A-99BB2CA48DA0}
+	EndGlobalSection
+EndGlobal

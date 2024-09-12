@@ -7,6 +7,7 @@ public class SyncerDbContext(DbContextOptions<SyncerDbContext> options) : DbCont
     public const string ConnectionStringName = "SvcDbContext";
 
     public DbSet<Presentation> Presentations { get; set; }
+
     public DbSet<Emoji> Emojis { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -22,15 +23,19 @@ public class SyncerDbContext(DbContextOptions<SyncerDbContext> options) : DbCont
     {
         var emoji = modelBuilder.Entity<Emoji>();
 
-        emoji.HasKey(x => x.Code);
+        emoji.
+            HasKey(x => x.Code);
 
-        emoji.Property(x => x.Code)
+        emoji
+            .Property(x => x.Code)
+            .IsUnicode(false)
             .ValueGeneratedNever()
-            .IsUnicode(false);
+            .HasMaxLength(100);
 
-        emoji.Property(x => x.ShortName)
-            .HasMaxLength(100)
-            .IsUnicode(false);
+        emoji
+            .Property(x => x.ShortName)
+            .IsUnicode(false)
+            .HasMaxLength(100);
     }
 
     private static void ConfigurePresentation(ModelBuilder modelBuilder)
@@ -62,6 +67,11 @@ public class SyncerDbContext(DbContextOptions<SyncerDbContext> options) : DbCont
             .IsUnicode(false)
             .IsRequired();
 
+        presentation.OwnsMany(x => x.Joiners, joinerBuilder =>
+        {
+            joinerBuilder.ToJson();
+        });
+
         presentation
             .OwnsMany(x => x.Milestones, milestoneBuilder =>
             {
@@ -90,12 +100,12 @@ public class SyncerDbContext(DbContextOptions<SyncerDbContext> options) : DbCont
 
                 milestoneBuilder.OwnsMany(x => x.Emojis, emojisBuilder =>
                 {
-                    emojisBuilder.ToJson();
+                    emojisBuilder.ToTable("MilestoneEmojis");
                 });
 
                 milestoneBuilder.OwnsMany(x => x.Reactions, reactionBuilder =>
                 {
-                    reactionBuilder.ToJson();
+                    reactionBuilder.ToTable("MilestoneReactions");
                 });
             });
     }

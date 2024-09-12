@@ -1,3 +1,4 @@
+using Syncer.APIs.Endpoints;
 using Syncer.APIs.Persistence;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -5,7 +6,9 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+builder.Services.AddMemoryCache();
 
+builder.Services.AddHostedService<MemoryCachSetup>();
 
 builder.Services.AddDbContext<SyncerDbContext>((sp, configure) =>
 {
@@ -24,5 +27,7 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
-app.Run();
+app.MapEmojiEndpoints();
+app.MapPresentationEndpoints();
 
+app.Run();

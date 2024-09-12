@@ -12,11 +12,13 @@ public class Milestone
 
     public required string Description { get; set; }
 
-    public ICollection<Emoji> Emojis { get; set; }
+    public ICollection<MilestoneEmoji> Emojis { get; set; }
 
-    public ICollection<string> Reactions { get; set; }
+    public ICollection<Reaction> Reactions { get; set; }
 
 }
+
+public record MilestoneEmoji(string Code, string ShortName);
 
 public enum MilestoneStatus
 {
